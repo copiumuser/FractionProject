@@ -1,8 +1,8 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 4 - Friends
-6/25/2025
+Guided Practice 5 - Dynamic Memory Allocation
+7/1/2025
 */
 
 #ifndef FRACTION
@@ -15,8 +15,10 @@ using std::string;
 
 class Fraction {
 private:
-	int num; // numerator
-	int den; // denominator
+	int *num; // numerator
+	int *den; // denominator
+
+	void create();
 
 public:
 	void setFraction(int n, int d);
@@ -33,8 +35,9 @@ public:
 
 	// constructors
 	Fraction();
-	Fraction(int n, int d);
-	Fraction(string frac);
+	Fraction(const int n, const int d);
+	Fraction(const string frac);
+	Fraction(const Fraction& other);
 
 	// operator overloads
 	Fraction operator+ (const Fraction& f);
@@ -45,6 +48,9 @@ public:
 
 	friend std::istream& operator >> (std::istream& input, Fraction& f);
 	friend std::ostream& operator << (std::ostream& output, Fraction& f);
+
+	// destructor
+	~Fraction();
 };
 
 #endif
