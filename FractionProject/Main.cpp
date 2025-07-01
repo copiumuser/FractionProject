@@ -1,8 +1,8 @@
 /*
 Main.cpp
 Zoey Anderson
-Guided Practice 2 - Constructors
-6/17/2025
+Guided Practice 3 - Operator Overloading
+6/24/2025
 */
 
 #include <iostream>
@@ -13,11 +13,27 @@ using namespace std;
 
 int main() {
 
-	Fraction f1, f2(3, 16), f3("3/14");
+	Fraction f1(1, 4), f2("1/2"), f3;
 
+	cout << "f1: ";
 	f1.printFraction();
+	cout << "f2: ";
 	f2.printFraction();
+	cout << "f1 + f2: ";
+	f3 = f1 + f2;
 	f3.printFraction();
+	cout << "f2 - f1: ";
+	f3 = f2 - f1;
+	f3.printFraction();
+	cout << "f1 * f2: ";
+	f3 = f1 * f2;
+	f3.printFraction();
+	cout << "f2 / f1: ";
+	f3 = f2 / f1;
+	f3.printFraction();
+	cout << "f1 = f2\nf1: ";
+	f1 = f2;
+	f1.printFraction();
 
 	return 0;
 }

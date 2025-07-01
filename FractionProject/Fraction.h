@@ -1,8 +1,8 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 2 - Constructors
-6/17/2025
+Guided Practice 3 - Operator Overloading
+6/24/2025
 */
 
 #ifndef FRACTION
@@ -26,9 +26,21 @@ public:
 
 	void printFraction();
 
+	// accessors
+	int getNum() const;
+	int getDen() const;
+
+	// constructors
 	Fraction();
 	Fraction(int n, int d);
 	Fraction(string frac);
+
+	// operator overloads
+	Fraction operator+ (const Fraction& f);
+	Fraction operator- (const Fraction& f);
+	Fraction operator* (const Fraction& f);
+	Fraction operator/ (const Fraction& f);
+	Fraction& operator= (const Fraction& f);
 };
 
 #endif

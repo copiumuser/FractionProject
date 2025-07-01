@@ -1,8 +1,8 @@
 /*
 Fraction.cpp
 Zoey Anderson
-Guided Practice 2 - Constructors
-6/17/2025
+Guided Practice 3 - Operator Overloading
+6/24/2025
 */
 
 #include <iostream>
@@ -72,5 +72,38 @@ void Fraction::printFraction() {
 		cout << "0" << endl;
 		return;
 	}
-	cout << this->num << "/" << this->den << endl;
+	cout << this->getNum() << "/" << this->getDen() << endl;
+}
+
+// accessors
+
+int Fraction::getNum() const {
+	return this->num;
+}
+
+int Fraction::getDen() const {
+	return this->den;
+}
+
+// operator overloads
+
+Fraction Fraction::operator+(const Fraction& f) {
+	return this->add(f);
+}
+
+Fraction Fraction::operator-(const Fraction& f) {
+	return this->sub(f);
+}
+
+Fraction Fraction::operator*(const Fraction& f) {
+	return this->mult(f);
+}
+
+Fraction Fraction::operator/(const Fraction& f) {
+	return this->div(f);
+}
+
+Fraction& Fraction::operator=(const Fraction& f) {
+	this->setFraction(f.getNum(), f.getDen());
+	return *this;
 }
