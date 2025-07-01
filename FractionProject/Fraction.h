@@ -1,12 +1,16 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 1 - Creating A Class
-6/11/2025
+Guided Practice 2 - Constructors
+6/17/2025
 */
 
 #ifndef FRACTION
 #define FRACTION
+
+#include <string>
+
+using std::string;
 
 class Fraction {
 private:
@@ -21,6 +25,10 @@ public:
 	Fraction div(const Fraction& f);
 
 	void printFraction();
+
+	Fraction();
+	Fraction(int n, int d);
+	Fraction(string frac);
 };
 
 #endif
