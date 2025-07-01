@@ -1,14 +1,15 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 3 - Operator Overloading
-6/24/2025
+Guided Practice 4 - Friends
+6/25/2025
 */
 
 #ifndef FRACTION
 #define FRACTION
 
 #include <string>
+#include <iostream>
 
 using std::string;
 
@@ -41,6 +42,9 @@ public:
 	Fraction operator* (const Fraction& f);
 	Fraction operator/ (const Fraction& f);
 	Fraction& operator= (const Fraction& f);
+
+	friend std::istream& operator >> (std::istream& input, Fraction& f);
+	friend std::ostream& operator << (std::ostream& output, Fraction& f);
 };
 
 #endif

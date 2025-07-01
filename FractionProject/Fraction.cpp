@@ -1,8 +1,8 @@
 /*
 Fraction.cpp
 Zoey Anderson
-Guided Practice 3 - Operator Overloading
-6/24/2025
+Guided Practice 4 - Friends
+6/25/2025
 */
 
 #include <iostream>
@@ -106,4 +106,18 @@ Fraction Fraction::operator/(const Fraction& f) {
 Fraction& Fraction::operator=(const Fraction& f) {
 	this->setFraction(f.getNum(), f.getDen());
 	return *this;
+}
+
+std::istream& operator>> (std::istream& input, Fraction& f) {
+	std::cout << "Enter a numerator: ";
+	std::cin >> f.num;
+	std::cout << "\nEnter a denominator: ";
+	std::cin >> f.den;
+
+	return input;
+}
+
+ostream& operator<< (ostream& output, Fraction& f) {
+	cout << "Numerator: " << f.num << "\nDenominator: " << f.den << endl;
+	return output;
 }
