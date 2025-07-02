@@ -1,8 +1,8 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 5 - Dynamic Memory Allocation
-7/1/2025
+Guided Practice 6 - Static Members
+7/2/2025
 */
 
 #ifndef FRACTION
@@ -17,6 +17,10 @@ class Fraction {
 private:
 	int *num; // numerator
 	int *den; // denominator
+	
+
+	// static variables
+	static int currentCount;
 
 	void create();
 
@@ -32,6 +36,7 @@ public:
 	// accessors
 	int getNum() const;
 	int getDen() const;
+	static int getCurrentCount();
 
 	// constructors
 	Fraction();

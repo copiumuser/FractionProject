@@ -1,8 +1,8 @@
 /*
 Fraction.cpp
 Zoey Anderson
-Guided Practice 5 - Dynamic Memory Allocation
-7/1/2025
+Guided Practice 6 - Static Members
+7/2/2025
 */
 
 #include <iostream>
@@ -11,6 +11,8 @@ Guided Practice 5 - Dynamic Memory Allocation
 #include "Fraction.h"
 
 using namespace std;
+
+int Fraction::currentCount = 0;
 
 void Fraction::setFraction(int n, int d) {
 	this->create();
@@ -77,16 +79,22 @@ int Fraction::getDen() const {
 	return *this->den;
 }
 
+int Fraction::getCurrentCount() {
+	return currentCount;
+}
+
 // constructors
 
 Fraction::Fraction() {
 	this->create();
 	this->setFraction(1, 1);
+	currentCount++;
 }
 
 Fraction::Fraction(const int n, const int d) {
 	this->create();
 	this->setFraction(n, d);
+	currentCount++;
 }
 
 Fraction::Fraction(const string frac) {
@@ -96,12 +104,14 @@ Fraction::Fraction(const string frac) {
 	// convert to int a substring of frac from the first / position + 1 to the end of frac
 	int d = stoi(frac.substr(frac.find_first_of('/') + 1, frac.length() - (frac.find_first_of('/') - 1)));
 	this->setFraction(n, d);
+	currentCount++;
 }
 
 Fraction::Fraction(const Fraction& other) {
 	create();
 	*this->num = *other.num;
 	*this->den = *other.den;
+	currentCount++;
 }
 
 // operator overloads
@@ -146,4 +156,5 @@ ostream& operator<< (ostream& output, Fraction& f) {
 Fraction::~Fraction() {
 	delete num;
 	delete den;
+	currentCount--;
 }

@@ -1,8 +1,8 @@
 /*
 Main.cpp
 Zoey Anderson
-Guided Practice 5 - Dynamic Memory Allocation
-7/1/2025
+Guided Practice 6 - Static Members
+7/2/2025
 */
 
 #include <iostream>
@@ -12,15 +12,18 @@ Guided Practice 5 - Dynamic Memory Allocation
 using namespace std;
 
 int main() {
-	Fraction f1, f2, f3;
+	Fraction* f1, *f2, *f3, *f4;
+	f1 = new Fraction;
+	f2 = new Fraction;
+	f3 = new Fraction;
+	f4 = new Fraction;
 
-	cin >> f1;
-	cin >> f2;
+	cout << Fraction::getCurrentCount() << endl;
 
-	cout << f1 << endl;
-	f2 = f1;
-	f3 = f1 + f2;
-	cout << f3 << endl;
+	delete f3;
+	delete f4;
+
+	cout << Fraction::getCurrentCount() << endl;
 
 	return 0;
 }
