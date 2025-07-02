@@ -12,7 +12,7 @@ Guided Practice 6 - Static Members
 
 using namespace std;
 
-int Fraction::currentCount = 0;
+int Fraction::currentCount = 0;		// initialize currentCount to 0 to allow in/decrements
 
 void Fraction::setFraction(int n, int d) {
 	this->create();
@@ -88,13 +88,13 @@ int Fraction::getCurrentCount() {
 Fraction::Fraction() {
 	this->create();
 	this->setFraction(1, 1);
-	currentCount++;
+	currentCount++;		// increment count as a new object is created
 }
 
 Fraction::Fraction(const int n, const int d) {
 	this->create();
 	this->setFraction(n, d);
-	currentCount++;
+	currentCount++;		// increment count as a new object is created
 }
 
 Fraction::Fraction(const string frac) {
@@ -104,14 +104,14 @@ Fraction::Fraction(const string frac) {
 	// convert to int a substring of frac from the first / position + 1 to the end of frac
 	int d = stoi(frac.substr(frac.find_first_of('/') + 1, frac.length() - (frac.find_first_of('/') - 1)));
 	this->setFraction(n, d);
-	currentCount++;
+	currentCount++;		// increment count as a new object is created
 }
 
 Fraction::Fraction(const Fraction& other) {
 	create();
 	*this->num = *other.num;
 	*this->den = *other.den;
-	currentCount++;
+	currentCount++;		// increment count as a new object is created
 }
 
 // operator overloads
@@ -156,5 +156,5 @@ ostream& operator<< (ostream& output, Fraction& f) {
 Fraction::~Fraction() {
 	delete num;
 	delete den;
-	currentCount--;
+	currentCount--;		// decrement count as an object is destroyed
 }
