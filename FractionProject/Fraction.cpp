@@ -147,7 +147,7 @@ std::istream& operator>> (std::istream& input, Fraction& f) {
 }
 
 ostream& operator<< (ostream& output, Fraction& f) {
-	cout << "Numerator: " << *f.num << "\nDenominator: " << *f.den << endl;
+	cout << *f.num << "/" << *f.den << endl;
 	return output;
 }
 

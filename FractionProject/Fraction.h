@@ -1,8 +1,8 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 6 - Static Members
-7/2/2025
+Guided Practice 7 - File IO
+7/10/2025
 */
 
 #ifndef FRACTION
