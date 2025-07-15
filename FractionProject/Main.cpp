@@ -1,8 +1,8 @@
 /*
 Main.cpp
 Zoey Anderson
-Guided Practice 7 - File IO
-7/10/2025
+Guided Practice 8 - Recursion
+7/14/2025
 */
 
 #include <iostream>
@@ -18,8 +18,21 @@ void readFraction();
 
 int main() {
 	srand(static_cast<unsigned int>(time(0)));
-	writeFraction(100);
-	readFraction();
+
+	Fraction f1("5/10"), f2("1/8"), f3;
+
+	f1.printFraction();
+	f2.printFraction();
+
+	f3 = f1 + f2;
+	f3.printFraction();
+	f3 = f1 - f2;
+	f3.printFraction();
+	f3 = f1 * f2;
+	f3.printFraction();
+	f3 = f1 / f2;
+	f3.printFraction();
+
 	return 0;
 }
 

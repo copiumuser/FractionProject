@@ -1,12 +1,13 @@
 /*
 Fraction.cpp
 Zoey Anderson
-Guided Practice 6 - Static Members
-7/2/2025
+Guided Practice 8 - Recursion
+7/14/2025
 */
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 #include "Fraction.h"
 
@@ -18,12 +19,14 @@ void Fraction::setFraction(int n, int d) {
 	this->create();
 	*this->num = n;
 	*this->den = d;
+	this->simplify();
 }
 
 Fraction Fraction::add(const Fraction& f) {
 	Fraction temp;
 	*temp.num = (*this->num * *f.den) + (*f.num * *this->den);
 	*temp.den = (*f.den * *this->den);
+	temp.simplify();
 	return temp;
 }
 
@@ -31,6 +34,7 @@ Fraction Fraction::sub(const Fraction& f) {
 	Fraction temp;
 	*temp.num = (*this->num * *f.den) - (*f.num * *this->den);
 	*temp.den = (*f.den * *this->den);
+	temp.simplify();
 	return temp;
 }
 
@@ -38,6 +42,7 @@ Fraction Fraction::mult(const Fraction& f) {
 	Fraction temp;
 	*temp.num = (*this->num * *f.num);
 	*temp.den = (*this->den * *f.den);
+	temp.simplify();
 	return temp;
 }
 
@@ -45,6 +50,7 @@ Fraction Fraction::div(const Fraction& f) {
 	Fraction temp;
 	*temp.num = (*this->num * *f.den);
 	*temp.den = (*this->den * *f.num);
+	temp.simplify();
 	return temp;
 }
 
@@ -62,11 +68,31 @@ void Fraction::printFraction() {
 	cout << this->getNum() << "/" << this->getDen() << endl;
 }
 
+void Fraction::simplify() {
+	if (*den == 0) {
+		throw runtime_error("Denominator cannot be divided");
+	}
+	int commonDivisor = gcd(*this->num, *this->den);
+	*this->num /= commonDivisor;
+	*this->den /= commonDivisor;
+}
+
 // private functions
 
 void Fraction::create() {
 	this->num = new int;
 	this->den = new int;
+}
+
+int Fraction::gcd(int a, int b) {
+	a = abs(a);
+	b = abs(b);
+	if (b == 0) {
+		return a;
+	}
+	else {
+		return gcd(b, a % b);
+	}
 }
 
 // accessors
@@ -109,8 +135,7 @@ Fraction::Fraction(const string frac) {
 
 Fraction::Fraction(const Fraction& other) {
 	create();
-	*this->num = *other.num;
-	*this->den = *other.den;
+	this->setFraction(other.getNum(), other.getDen());
 	currentCount++;		// increment count as a new object is created
 }
 

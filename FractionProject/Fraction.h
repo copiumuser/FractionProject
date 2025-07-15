@@ -1,8 +1,8 @@
 /*
 Fraction.h
 Zoey Anderson
-Guided Practice 7 - File IO
-7/10/2025
+Guided Practice 8 - Recursion
+7/14/2025
 */
 
 #ifndef FRACTION
@@ -18,11 +18,12 @@ private:
 	int *num; // numerator
 	int *den; // denominator
 	
-
 	// static variables
 	static int currentCount;
 
+	// helper functions
 	void create();
+	int gcd(int a, int b);
 
 public:
 	void setFraction(int n, int d);
@@ -30,8 +31,8 @@ public:
 	Fraction sub(const Fraction& f);
 	Fraction mult(const Fraction& f);
 	Fraction div(const Fraction& f);
-
 	void printFraction();
+	void simplify();
 
 	// accessors
 	int getNum() const;
